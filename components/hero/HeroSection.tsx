@@ -18,7 +18,7 @@ interface HeroSectionProps {
 function HeroButton({ text, className }: HeroButtonProps) {
   return (
     <button
-      className={`overflow-hidden gap-2 self-stretch p-3 my-auto rounded-lg border border-solid ${className} hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:ring-var(--color-accent-teal) transition-all`}
+      className={`w-full sm:w-auto px-6 py-3 rounded-lg border transition-all duration-200 ${className} hover:opacity-90`}
       type="button"
       aria-label={text}
     >
@@ -36,35 +36,34 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section
-      className="flex relative flex-col justify-center items-center px-6 py-40 whitespace-nowrap min-h-[524px] max-md:px-5 max-md:py-24 bg-var(--color-primary-dark)"
+      className="min-h-[400px] sm:min-h-[524px] flex items-center justify-center bg-cover bg-center bg-no-repeat text-white"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${heroImage})`
+      }}
       role="banner"
       aria-labelledby="hero-title"
     >
-      <img
-        loading="lazy"
-        src={heroImage}
-        className="object-cover absolute inset-0 size-full"
-        alt=""
-        role="presentation"
-      />
-      <div className="flex relative flex-col max-w-full leading-tight text-center text-var(--color-primary-light) w-[151px]">
-        <h1
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 
           id="hero-title"
-          className="tracking-tighter font-var(--font-primary) text-4xl md:text-5xl"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
         >
           {title}
         </h1>
-        <p className="mt-2 font-var(--font-secondary) text-lg">{subtitle}</p>
-      </div>
-      <div className="flex relative gap-4 justify-center items-center mt-8 leading-none font-var(--font-secondary) text-base">
-        {buttons.map((button, index) => (
-          <HeroButton
-            key={index}
-            variant={button.variant}
-            text={button.text}
-            className={button.className}
-          />
-        ))}
+        <p className="text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          {subtitle}
+        </p>
+        
+        {buttons?.length > 0 && (
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            {buttons.map((button, index) => (
+              <HeroButton
+                key={index}
+                {...button}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

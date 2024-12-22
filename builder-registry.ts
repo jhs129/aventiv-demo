@@ -5,21 +5,21 @@ import { fileURLToPath } from "url";
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 Builder.registerComponent(
-  dynamic(() => import("@/components/layout/header")),
+  dynamic(() => import("@/components/layout/Header")),
   {
     name: "Header",
   }
 );
 
 Builder.registerComponent(
-  dynamic(() => import("@/components/layout/footer2")),
+  dynamic(() => import("@/components/layout/Footer")),
   {
     name: "Footer",
   }
 );
 
 Builder.registerComponent(
-  dynamic(() => import("./components/ui/logo")),
+  dynamic(() => import("./components/ui/Logo")),
   {
     name: "Logo",
     inputs: [
@@ -37,7 +37,7 @@ Builder.registerComponent(
 );
 
 Builder.registerComponent(
-  dynamic(() => import("./components/ui/hero")),
+  dynamic(() => import("./components/ui/Hero")),
   {
     name: "Hero",
     inputs: [
@@ -57,7 +57,7 @@ Builder.registerComponent(
         type: "string",
         enum: ["red", "green", "teal"],
         defaultValue: "teal",
-      }
+      },
     ],
   }
 );
@@ -106,28 +106,24 @@ Builder.registerComponent(
   }
 );
 
-Builder.register("editor.settings", {
-  designTokens: {
-    colors: [
-      { name: "White", value: "var(--color-primary-light)" },
-      { name: "Dark", value: "var(--color-primary-dark)" },
-      { name: "Red", value: "var(--color-accent-red)" },
-      { name: "Green", value: "var(--color-accent-green)" },
-      { name: "Teal", value: "var(--color-accent-teal)" },
-    ],
-    spacing: [
-      { name: "Lg", value: "var(--spacing-lg, 16px)" },
-      { name: "Md", value: "var(--spacing-md, 8px)" },
-      { name: "Sm", value: "var(--spacing-sm, 4px)" },
-      { name: "None", value: "var(--spacing-none, 0px)" },
-    ],
-    fontFamily: [
-      { name: "Primary", value: "var(--font-primary, 'Arial', sans-serif)" },
+Builder.registerComponent(
+  dynamic(() => import("@/components/ui/HeroSection")),
+  {
+    name: "HeroSection",
+    inputs: [
       {
-        name: "Secondary",
-        value: "var(--font-secondary, 'Gilroy', sans-serif)",
+        name: "title",
+        type: "string",
+        required: true,
+        defaultValue: "Empowering Rehabilitative Justice."
       },
+      {
+        name: "description",
+        type: "string",
+        required: true,
+        defaultValue: "We create technology that builds bonds, improves safety, strengthens communities, and supports second chances."
+      }
     ],
-    // other design tokens
-  },
-});
+  }
+);
+
