@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary-light: #FFFFFF;
+  --color-primary-dark: #343A40;
+  --color-secondary-dark: #343A40;
+  --color-accent-red: #F1696D;
+  --color-accent-green: #5B794E;
+  --color-accent-teal: #037E88;
+  --text-color-body-text-primary: #037E88;
+  --color-tertiary: #D4EBF0;
+  --color-quaternary: #8F3536;
+  --font-primary: 'Lora', sans-serif;
+  --font-secondary: 'Liberation Sans', sans-serif;
+  --spacing-xl: 32px;
+  --spacing-lg: 16px;
+  --spacing-md: 8px;
+  --spacing-sm: 4px;
+  --spacing-xs: 2px;
+  --spacing-none: 0px;
+}
+
+@layer base {
+  body {
+    @apply bg-white font-primary;
+  }
+
+  h1 {
+    @apply text-xl leading-loose md:text-[2.5rem] md:leading-none;
+  }
+
+  h2 {
+    @apply text-[2rem] my-4 font-medium font-sans text-inherit;
+  }
+  h3 {
+    @apply text-xl my-4 leading-5;
+  }
+  h4 {
+    @apply text-lg my-4;
+  }
+  h5 {
+    @apply text-base my-4 font-bold;
+  }
+  h6 {
+    @apply my-4 leading-5;
+  }
+  p {
+    @apply mb-4 font-primary leading-[1.125rem];
+  }
+
+  a {
+    /* transition: color .25s ease-in-out; */
+    @apply text-primaryAccent  hover:text-secondaryDark transition-colors duration-300 ease-in-out;
+  }
+
+  nav a {
+    @apply text-white hover:text-secondaryDark transition-colors duration-300 ease-in-out;
+  }
+
+  li a {
+    @apply text-inherit hover:text-secondaryDark transition-colors duration-300 ease-in-out;
+  }
+
+  button {
+    @apply mx-auto px-6 py-2 bg-primaryAccent hover:bg-secondaryAccent text-white hover:text-primaryDark rounded-full transition-colors duration-300 ease-in-out;
+  }
+
+  ul {
+    @apply list-disc px-4;
+  }
+
+  li {
+    @apply mb-2 pr-4;
+  }
+}
+
+
+
+.btn-carousel {
+  @apply bg-tertiaryAccent hover:bg-secondaryDark text-white border border-tertiaryAccent rounded-lg px-2 py-4 capitalize;
+}
+
+.site-container {
+  @apply container mx-auto px-4;
+}
+
+
