@@ -1,73 +1,73 @@
 {
-    "results": [
-      {
-        "query": [],
-        "folders": [],
-        "createdDate": 1735225885037,
-        "id": "0560e690186e4977b6dee0affd3c4d62",
-        "name": "header-navigation",
-        "modelId": "202313d5da204bedbceaa2bab9392b5d",
-        "published": "published",
-        "meta": {
-          "kind": "data",
-          "lastPreviewUrl": ""
-        },
-        "data": {
-          "level1": [
-            {
-              "text": "What We Do",
-              "level2": [
-                {
-                  "text": "JPay",
-                  "newField1": "/jpay"
-                },
-                {
-                  "text": "Securus Technologies",
-                  "newField1": "/securus-technologies"
-                }
-              ]
-            },
-            {
-              "text": "Transformation",
-              "level2": [
-                {
-                  "text": "Digital Transformation",
-                  "newField1": "/digital-transformation"
-                },
-                {
-                  "text": "Business Transformation",
-                  "newField1": "/business-transformation"
-                }
-              ]
-            },
-            {
-              "level2": [],
-              "text": "Press"
-            },
-            {
-              "level2": [],
-              "text": "Suppliers",
-              "href": "/suppliers"
-            },
-            {
-              "level2": [],
-              "text": "Careers",
-              "href": "/careers"
-            },
-            {
-              "level2": [],
-              "text": "Contact",
-              "href": "/contact"
-            }
-          ]
-        },
-        "variations": {},
-        "lastUpdated": 1735226129280,
-        "firstPublished": 1735226129268,
-        "testRatio": 1,
-        "createdBy": "YKRZYQ4lx5hVipxOABWD0DaLFRZ2",
-        "lastUpdatedBy": "YKRZYQ4lx5hVipxOABWD0DaLFRZ2",
-        "rev": "hqvzygq13h"
-      }
-    ]
-  }
+  "results": [
+    {
+      "query": [],
+      "folders": [],
+      "createdDate": 1735225885037,
+      "id": "0560e690186e4977b6dee0affd3c4d62",
+      "name": "header-navigation",
+      "modelId": "202313d5da204bedbceaa2bab9392b5d",
+      "published": "published",
+      "meta": {
+        "kind": "data",
+        "lastPreviewUrl": ""
+      },
+      "data": {
+        "level1": [
+          {
+            "text": "What We Do",
+            "level2": [
+              {
+                "text": "JPay",
+                "href": "/jpay"
+              },
+              {
+                "text": "Securus Technologies",
+                "href": "/securus-technologies"
+              }
+            ]
+          },
+          {
+            "text": "Transformation",
+            "level2": [
+              {
+                "text": "Digital Transformation",
+                "newField1": "/digital-transformation"
+              },
+              {
+                "text": "Business Transformation",
+                "newField1": "/business-transformation"
+              }
+            ]
+          },
+          {
+            "level2": [],
+            "text": "Press"
+          },
+          {
+            "level2": [],
+            "text": "Suppliers",
+            "href": "/suppliers"
+          },
+          {
+            "level2": [],
+            "text": "Careers",
+            "href": "/careers"
+          },
+          {
+            "level2": [],
+            "text": "Contact",
+            "href": "/contact"
+          }
+        ]
+      },
+      "variations": {},
+      "lastUpdated": 1735226129280,
+      "firstPublished": 1735226129268,
+      "testRatio": 1,
+      "createdBy": "YKRZYQ4lx5hVipxOABWD0DaLFRZ2",
+      "lastUpdatedBy": "YKRZYQ4lx5hVipxOABWD0DaLFRZ2",
+      "rev": "hqvzygq13h"
+    }
+  ]
+}

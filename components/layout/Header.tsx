@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import headerContent from "./Header.content.json";
 
 export default function Header() {
@@ -51,7 +51,7 @@ export default function Header() {
                   item.level2?.map((subItem) => ({
                     label: subItem.text,
                     href:
-                      subItem.newField1 ||
+                      (subItem as { href?: string }).href ||
                       `/${subItem.text.toLowerCase().replace(/\s+/g, "-")}`,
                   })) || []
                 }
@@ -134,7 +134,7 @@ function MobileNavItem({
                 <Link
                   key={subItem.text}
                   href={
-                    subItem.newField1 ||
+                    subItem.href ||
                     `/${subItem.text.toLowerCase().replace(/\s+/g, "-")}`
                   }
                   className="block py-2 text-white hover:text-[#b5e48c]"
@@ -161,9 +161,9 @@ function MobileNavItem({
 
 interface NavItemProps {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   hasDropdown?: boolean;
-  dropdownItems?: { label: string; href: string }[];
+  dropdownItems?: Array<{ label: string; href: string }>;
 }
 
 function NavItem({ href, children, hasDropdown, dropdownItems }: NavItemProps) {
@@ -202,24 +202,11 @@ function NavItem({ href, children, hasDropdown, dropdownItems }: NavItemProps) {
   );
 }
 
-// Add TypeScript interfaces for the content structure
-interface Level2Item {
-  text: string;
-  newField1?: string;
-}
-
 interface NavigationItem {
   text: string;
   href?: string;
-  level2?: Level2Item[];
-}
-
-interface HeaderContent {
-  results: [
-    {
-      data: {
-        level1: NavigationItem[];
-      };
-    }
-  ];
+  level2?: Array<{
+    text: string;
+    href?: string;
+  }>;
 }
