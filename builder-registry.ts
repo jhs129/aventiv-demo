@@ -115,15 +115,26 @@ Builder.registerComponent(
         name: "title",
         type: "string",
         required: true,
-        defaultValue: "Empowering Rehabilitative Justice."
+        defaultValue: "[Headline]",
       },
       {
-        name: "description",
+        name: "subtitle",
         type: "string",
         required: true,
-        defaultValue: "We create technology that builds bonds, improves safety, strengthens communities, and supports second chances."
-      }
+        defaultValue: "[Subheadline]",
+      },
+      {
+        name: "buttonText",
+        type: "string",
+        required: true,
+        defaultValue: "Learn More",
+      },
+      {
+        name: "backgroundImageUrl",
+        type: "file",
+        required: true,
+        allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
+      },
     ],
   }
 );
-

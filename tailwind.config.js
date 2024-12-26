@@ -28,8 +28,6 @@ module.exports = {
       fontFamily: {
         primary: ['var(--font-primary)'],
         secondary: ['var(--font-secondary)'],
-        sans: ['Lufga', 'sans-serif'],
-        serif: ['Aspira', 'serif'],
       },
     },
   },

@@ -1,17 +1,18 @@
 import "@/styles/globals.css";
 import "@/styles/fonts.css";
-import { Lora } from "next/font/google";
+import { Roboto } from "next/font/google";
 import Head from "next/head";
 
-const lora = Lora({
-  subsets: ["latin"], // Adjust subsets as needed
-  weight: ["400", "700"], // Specify font weights
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-primary",
 });
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <main className={lora.className}>
+      <main className={`${roboto.variable}`}>
         <Component {...pageProps} />
       </main>
     </>
