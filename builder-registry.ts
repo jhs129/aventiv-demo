@@ -18,49 +18,7 @@ Builder.registerComponent(
   }
 );
 
-Builder.registerComponent(
-  dynamic(() => import("./components/ui/Logo")),
-  {
-    name: "Logo",
-    inputs: [
-      {
-        name: "image",
-        type: "file",
-      },
-      {
-        name: "alt",
-        type: "string",
-        required: true,
-      },
-    ],
-  }
-);
 
-Builder.registerComponent(
-  dynamic(() => import("./components/ui/Hero")),
-  {
-    name: "Hero",
-    inputs: [
-      {
-        name: "body",
-        type: "html",
-        required: true,
-        defaultValue: "Default Body",
-      },
-      {
-        name: "image",
-        type: "file",
-      },
-      {
-        name: "color",
-        friendlyName: "Background color",
-        type: "string",
-        enum: ["red", "green", "teal"],
-        defaultValue: "teal",
-      },
-    ],
-  }
-);
 
 Builder.registerComponent(
   dynamic(() => import("./components/ui/Banner50")),
@@ -132,7 +90,7 @@ Builder.registerComponent(
       {
         name: "backgroundImageUrl",
         type: "file",
-        required: true,
+        required: false,
         allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
       },
     ],

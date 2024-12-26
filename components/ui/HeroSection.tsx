@@ -8,36 +8,36 @@ interface HeroProps {
 }
 
 export default function HeroSection({
-  title = "Empowering Rehabilitative Justice.",
-  subtitle = "We create technology that builds bonds, improves safety, strengthens communities, and supports second chances.",
-  buttonText = "Learn More",
-  backgroundImageUrl = "https://cdn.builder.io/api/v1/image/assets/7bf199de15724d268c1417f75ca31ce1/f4e7cb274adfc1c616aea0b9a7d94c804c7d853f94c02ea0f35e1be0de978b13?apiKey=7bf199de15724d268c1417f75ca31ce1&"
+  title = "[Title]",
+  subtitle = "[Subtitle",
+  buttonText = "[Learn More]",
+  backgroundImageUrl = "https://www.aventiv.com/mp/images/hero-image-1.jpg",
 }: HeroProps) {
   return (
-    <section 
-      className="flex relative flex-col justify-center items-center px-6 py-40 min-h-[686px] max-md:px-5 max-md:py-24"
+    <section
+      className="flex relative flex-col justify-center px-6 py-40 min-h-[686px] max-md:px-5 max-md:py-24"
       role="banner"
       aria-label="Hero section"
     >
       <img
         loading="lazy"
         src={backgroundImageUrl}
-        alt=""
+        alt="hero background image"
         className="object-cover absolute inset-0 size-full"
         role="presentation"
       />
-      <div className="flex relative flex-col max-w-full text-white w-[862px]">
-        <h1>
-          {title}
-        </h1>
-        <p className="mt-4 text-2xl md:text-3xl">
-          {subtitle}
-        </p>
-      </div>
-      <div className="flex relative flex-col mt-8 leading-none">
-        <button aria-label={buttonText}>
-          {buttonText}
-        </button>
+      <div className="flex relative flex-col text-primaryLight max-w-full w-full lg:w-[800px]">
+        <div className="px-4 md:px-20">
+          <h1 className="text-left w-full">{title}</h1>
+          <p className="mt-4 text-xl md:text-3xl text-left w-full">
+            {subtitle}
+          </p>
+          <button
+            aria-label={buttonText}
+          >
+            {buttonText}
+          </button>
+        </div>
       </div>
     </section>
   );

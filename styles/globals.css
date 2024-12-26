@@ -29,7 +29,7 @@
   }
 
   h1 {
-    @apply font-primary font-bold text-[3.5rem] leading-tight;
+    @apply font-primary font-bold text-5xl md:text-[3.5rem] leading-tight;
   }
 
   h2 {
@@ -64,7 +64,7 @@
   }
 
   button {
-    @apply mx-auto px-6 py-4 bg-primaryAccent hover:bg-secondaryAccent text-white hover:text-secondaryDark rounded-lg transition-colors duration-300 ease-in-out;
+    @apply mx-auto px-6 py-4 mt-8 bg-primaryAccent hover:bg-secondaryAccent text-white hover:text-secondaryDark transition-colors duration-300 ease-in-out;
   }
 
   ul {
