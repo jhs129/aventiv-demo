@@ -27,10 +27,10 @@ export default function HeroSection({
         role="presentation"
       />
       <div className="flex relative flex-col max-w-full text-white w-[862px]">
-        <h1 className="tracking-tighter max-md:max-w-full max-md:text-4xl">
+        <h1>
           {title}
         </h1>
-        <p className="mt-2 leading-10 max-md:max-w-full">
+        <p className="mt-4 text-2xl md:text-3xl">
           {subtitle}
         </p>
       </div>

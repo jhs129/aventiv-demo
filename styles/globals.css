@@ -29,7 +29,7 @@
   }
 
   h1 {
-    @apply font-primary text-2xl leading-loose md:text-[3.5rem] md:leading-none;
+    @apply font-primary font-bold text-[3.5rem] leading-tight;
   }
 
   h2 {
@@ -52,7 +52,6 @@
   }
 
   a {
-    /* transition: color .25s ease-in-out; */
     @apply text-primaryAccent  hover:text-secondaryDark transition-colors duration-300 ease-in-out;
   }
 
@@ -65,7 +64,7 @@
   }
 
   button {
-    @apply mx-auto px-6 py-2 bg-primaryAccent hover:bg-secondaryAccent text-white hover:text-secondaryDark rounded-full transition-colors duration-300 ease-in-out;
+    @apply mx-auto px-6 py-4 bg-primaryAccent hover:bg-secondaryAccent text-white hover:text-secondaryDark rounded-lg transition-colors duration-300 ease-in-out;
   }
 
   ul {
