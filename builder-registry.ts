@@ -82,7 +82,7 @@ Builder.registerComponent(
       {
         name: "buttonText",
         type: "string",
-        required: true,
+        required: false,
         defaultValue: "Learn More",
       },
       {
@@ -104,7 +104,8 @@ Builder.registerComponent(
         name: "imageUrl",
         type: "file",
         required: false,
-        defaultValue: "https://cdn.builder.io/api/v1/image/assets/676a64f96e2d4faca81be7ca51ab5911/98e95f5e06a909c2f1faacd8626e7c7d731d06abd2630cd6d88ad1e12af39931?apiKey=676a64f96e2d4faca81be7ca51ab5911&",
+        defaultValue:
+          "https://cdn.builder.io/api/v1/image/assets/676a64f96e2d4faca81be7ca51ab5911/98e95f5e06a909c2f1faacd8626e7c7d731d06abd2630cd6d88ad1e12af39931?apiKey=676a64f96e2d4faca81be7ca51ab5911&",
         allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
       },
       {
@@ -116,7 +117,8 @@ Builder.registerComponent(
       {
         name: "description",
         type: "html",
-        defaultValue: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        defaultValue:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       },
     ],
   }

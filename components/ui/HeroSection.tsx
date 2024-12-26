@@ -3,14 +3,14 @@ import * as React from "react";
 interface HeroProps {
   title: string;
   subtitle: string;
-  buttonText: string;
+  buttonText?: string;
   backgroundImageUrl: string;
 }
 
 export default function HeroSection({
   title = "[Title]",
   subtitle = "[Subtitle",
-  buttonText = "[Learn More]",
+  buttonText,
   backgroundImageUrl = "https://www.aventiv.com/mp/images/hero-image-1.jpg",
 }: HeroProps) {
   return (
@@ -32,11 +32,7 @@ export default function HeroSection({
           <p className="mt-4 text-xl md:text-3xl text-left w-full">
             {subtitle}
           </p>
-          <button
-            aria-label={buttonText}
-          >
-            {buttonText}
-          </button>
+          {buttonText && <button aria-label={buttonText}>{buttonText}</button>}
         </div>
       </div>
     </section>

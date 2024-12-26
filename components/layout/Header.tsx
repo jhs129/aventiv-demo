@@ -6,8 +6,23 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import headerContent from "./Header.content.json";
 
-export default function Header() {
-  const navigation = headerContent.results[0].data.level1;
+interface NavigationItem {
+  text: string;
+  href: string;
+  level2?: Array<{
+    text: string;
+    href: string;
+  }>;
+}
+
+interface HeaderProps {
+  navContent?: {
+    level1: NavigationItem[];
+  };
+}
+
+export default function Header({ navContent }: HeaderProps) {
+  const navigation = (navContent || headerContent).level1;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -42,18 +57,15 @@ export default function Header() {
             {navigation.map((item) => (
               <NavItem
                 key={item.text}
-                href={
-                  item.href ||
-                  `/${item.text.toLowerCase().replace(/\s+/g, "-")}`
-                }
-                hasDropdown={item.level2?.length > 0}
+                href={item.href}
+                hasDropdown={Boolean(item.level2?.length)}
                 dropdownItems={
-                  item.level2?.map((subItem) => ({
-                    label: subItem.text,
-                    href:
-                      (subItem as { href?: string }).href ||
-                      `/${subItem.text.toLowerCase().replace(/\s+/g, "-")}`,
-                  })) || []
+                  item.level2 && item.level2.length > 0
+                    ? item.level2.map((subItem) => ({
+                        label: subItem.text,
+                        href: subItem.href,
+                      }))
+                    : undefined
                 }
               >
                 {item.text}
@@ -104,13 +116,12 @@ export default function Header() {
   );
 }
 
-function MobileNavItem({
-  item,
-  onClose,
-}: {
+interface MobileNavItemProps {
   item: NavigationItem;
   onClose: () => void;
-}) {
+}
+
+function MobileNavItem({ item, onClose }: MobileNavItemProps) {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
   return (
@@ -133,10 +144,7 @@ function MobileNavItem({
               {item.level2.map((subItem) => (
                 <Link
                   key={subItem.text}
-                  href={
-                    subItem.href ||
-                    `/${subItem.text.toLowerCase().replace(/\s+/g, "-")}`
-                  }
+                  href={subItem.href || "#"}
                   className="block py-2 text-white hover:text-[#b5e48c]"
                   onClick={onClose}
                 >
@@ -148,7 +156,7 @@ function MobileNavItem({
         </>
       ) : (
         <Link
-          href={item.href || `/${item.text.toLowerCase().replace(/\s+/g, "-")}`}
+          href={item.href || "#"}
           className="block py-2 text-lg font-medium text-white hover:text-[#b5e48c]"
           onClick={onClose}
         >
@@ -159,14 +167,24 @@ function MobileNavItem({
   );
 }
 
-interface NavItemProps {
+interface DropdownItem {
+  label: string;
   href: string;
-  children: ReactNode;
-  hasDropdown?: boolean;
-  dropdownItems?: Array<{ label: string; href: string }>;
 }
 
-function NavItem({ href, children, hasDropdown, dropdownItems }: NavItemProps) {
+interface NavItemProps {
+  href?: string;
+  children: ReactNode;
+  hasDropdown?: boolean;
+  dropdownItems?: DropdownItem[];
+}
+
+function NavItem({
+  href = "#",
+  children,
+  hasDropdown,
+  dropdownItems,
+}: NavItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -200,13 +218,4 @@ function NavItem({ href, children, hasDropdown, dropdownItems }: NavItemProps) {
       )}
     </div>
   );
-}
-
-interface NavigationItem {
-  text: string;
-  href?: string;
-  level2?: Array<{
-    text: string;
-    href?: string;
-  }>;
 }

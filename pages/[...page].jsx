@@ -26,10 +26,12 @@ export const getStaticProps = async ({ params }) => {
     })
     .toPromise();
 
+    console.log(page.data.headerNav.value.data);
   // Return the page content as props
   return {
     props: {
       page: page || null,
+      headerNav: page.data.headerNav.value.data
     },
     // Revalidate the content every 5 seconds
     revalidate: 5,
@@ -46,6 +48,7 @@ export async function getStaticPaths() {
     options: { noTargeting: true },
   });
 
+
   // Generate the static paths for all pages in Builder
   return {
     paths: pages
@@ -56,7 +59,7 @@ export async function getStaticPaths() {
 }
 
 // Define the Page component
-export default function Page({ page }) {
+export default function Page({ page, headerNav }) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
@@ -74,7 +77,7 @@ export default function Page({ page }) {
         <title>{page?.data?.title}</title>
       </Head>
       {/* Render the Builder page */}
-      <Header />
+      <Header navContent={headerNav} />
       <BuilderComponent model="page" content={page || undefined} />
       <Footer />
     </>

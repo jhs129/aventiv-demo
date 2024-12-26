@@ -12,7 +12,7 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 builder.apiVersion = "v3";
 
 // Define the Page component
-export default function Page({ page }) {
+export default function Page({ page, headerNav }) {
   const router = useRouter();
   const isPreviewing = useIsPreviewing();
 
@@ -29,7 +29,7 @@ export default function Page({ page }) {
       <Head>
         <title>{page?.data?.title}</title>
       </Head>
-      <Header />
+      <Header navContent={headerNav} />
       {/* Render the Builder page */}
       <BuilderComponent model="page" content={page || undefined} />
       <Footer />
@@ -55,6 +55,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       page: page || null,
+      headerNav: page?.data?.headerNav?.value?.data || null,
     },
     // Revalidate the content every 5 seconds
     revalidate: 5,
