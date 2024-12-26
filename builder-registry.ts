@@ -123,3 +123,31 @@ Builder.registerComponent(
     ],
   }
 );
+
+Builder.registerComponent(
+  dynamic(() => import("@/components/ui/PersonCard")),
+  {
+    name: "PersonCard",
+    inputs: [
+      {
+        name: "name",
+        type: "string",
+        required: true,
+        defaultValue: "Person Name",
+      },
+      {
+        name: "bio",
+        type: "html",
+        required: true,
+        defaultValue: "Enter biography here",
+      },
+      {
+        name: "imageUrl",
+        type: "file",
+        required: true,
+        allowedFileTypes: ["jpeg", "jpg", "png", "webp"],
+        defaultValue: "",
+      },
+    ],
+  }
+);

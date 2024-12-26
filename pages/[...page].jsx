@@ -26,12 +26,11 @@ export const getStaticProps = async ({ params }) => {
     })
     .toPromise();
 
-    console.log(page.data.headerNav.value.data);
   // Return the page content as props
   return {
     props: {
       page: page || null,
-      headerNav: page.data.headerNav.value.data
+      headerNav: page?.data?.headerNav?.value?.data || null,
     },
     // Revalidate the content every 5 seconds
     revalidate: 5,
