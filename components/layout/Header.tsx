@@ -2,69 +2,160 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
+import headerContent from "./Header.content.json";
 
 export default function Header() {
+  const navigation = headerContent.results[0].data.level1;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="w-full bg-primaryAccent bg-[url('/images/header-bg-2.png')] bg-repeat">
-      <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between h-16 -mx-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center pl-4">
-            <Image
-              src="/images/logo-lime.svg"
-              alt="Aventiv Logo"
-              width={150}
-              height={150}
-            />
-          </Link>
-
-          {/* Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <NavItem
-              href="/what-we-do"
-              hasDropdown
-              dropdownItems={[
-                { label: "JPay", href: "/what-we-do/jpay" },
-                { label: "Securus", href: "/what-we-do/securus" },
-              ]}
-            >
-              What We Do
-            </NavItem>
-            <NavItem
-              href="/transformation"
-              hasDropdown
-              dropdownItems={[
-                {
-                  label: "Digital Transformation",
-                  href: "/transformation/digital",
-                },
-                {
-                  label: "Business Transformation",
-                  href: "/transformation/business",
-                },
-              ]}
-            >
-              Transformation
-            </NavItem>
-            <NavItem
-              href="/press"
-              hasDropdown
-              dropdownItems={[
-                { label: "News", href: "/press/news" },
-                { label: "Media Kit", href: "/press/media-kit" },
-              ]}
-            >
-              Press
-            </NavItem>
-            <NavItem href="/suppliers">Suppliers</NavItem>
-            <NavItem href="/careers">Careers</NavItem>
-            <NavItem href="/contact">Contact</NavItem>
+      <div className="px-4 md:px-8 lg:px-12">
+        <nav className="flex items-center justify-between h-16 max-w-screen-2xl mx-auto">
+          <div id="logo-container" className="flex-1">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo-lime.svg"
+                alt="Aventiv Logo"
+                width={150}
+                height={150}
+              />
+            </Link>
           </div>
+
+          {!isMobileMenuOpen && (
+            <button
+              className="lg:hidden flex items-center justify-center text-white hover:text-[#b5e48c] my-auto p-2"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu className="h-8 w-8" />
+            </button>
+          )}
+
+          <div
+            id="nav-container"
+            className="hidden lg:flex items-center space-x-8 ml-auto"
+          >
+            {navigation.map((item) => (
+              <NavItem
+                key={item.text}
+                href={
+                  item.href ||
+                  `/${item.text.toLowerCase().replace(/\s+/g, "-")}`
+                }
+                hasDropdown={item.level2?.length > 0}
+                dropdownItems={
+                  item.level2?.map((subItem) => ({
+                    label: subItem.text,
+                    href:
+                      subItem.newField1 ||
+                      `/${subItem.text.toLowerCase().replace(/\s+/g, "-")}`,
+                  })) || []
+                }
+              >
+                {item.text}
+              </NavItem>
+            ))}
+          </div>
+
+          {isMobileMenuOpen && (
+            <div className="lg:hidden fixed inset-0 z-50 bg-primaryAccent">
+              <div className="px-4 md:px-8 lg:px-12">
+                <div className="flex items-center justify-between h-16 max-w-screen-2xl mx-auto">
+                  <div className="flex-1">
+                    <Link href="/" className="flex items-center">
+                      <Image
+                        src="/images/logo-lime.svg"
+                        alt="Aventiv Logo"
+                        width={150}
+                        height={150}
+                      />
+                    </Link>
+                  </div>
+                  <button
+                    className="flex items-center justify-center text-white hover:text-[#b5e48c] my-auto p-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                  >
+                    <X className="h-8 w-8" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="px-4 md:px-8 lg:px-12 mt-4">
+                <div className="flex flex-col space-y-4">
+                  {navigation.map((item) => (
+                    <MobileNavItem
+                      key={item.text}
+                      item={item}
+                      onClose={() => setIsMobileMenuOpen(false)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </nav>
       </div>
     </header>
+  );
+}
+
+function MobileNavItem({
+  item,
+  onClose,
+}: {
+  item: NavigationItem;
+  onClose: () => void;
+}) {
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+  return (
+    <div className="text-white">
+      {item.level2?.length ? (
+        <>
+          <button
+            className="flex items-center justify-between w-full py-2 text-lg font-medium hover:text-[#b5e48c]"
+            onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
+          >
+            {item.text}
+            <ChevronDown
+              className={`h-5 w-5 transform transition-transform ${
+                isSubMenuOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+          {isSubMenuOpen && (
+            <div className="ml-4 mt-2 space-y-2">
+              {item.level2.map((subItem) => (
+                <Link
+                  key={subItem.text}
+                  href={
+                    subItem.newField1 ||
+                    `/${subItem.text.toLowerCase().replace(/\s+/g, "-")}`
+                  }
+                  className="block py-2 text-white hover:text-[#b5e48c]"
+                  onClick={onClose}
+                >
+                  {subItem.text}
+                </Link>
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <Link
+          href={item.href || `/${item.text.toLowerCase().replace(/\s+/g, "-")}`}
+          className="block py-2 text-lg font-medium text-white hover:text-[#b5e48c]"
+          onClick={onClose}
+        >
+          {item.text}
+        </Link>
+      )}
+    </div>
   );
 }
 
@@ -109,4 +200,26 @@ function NavItem({ href, children, hasDropdown, dropdownItems }: NavItemProps) {
       )}
     </div>
   );
+}
+
+// Add TypeScript interfaces for the content structure
+interface Level2Item {
+  text: string;
+  newField1?: string;
+}
+
+interface NavigationItem {
+  text: string;
+  href?: string;
+  level2?: Level2Item[];
+}
+
+interface HeaderContent {
+  results: [
+    {
+      data: {
+        level1: NavigationItem[];
+      };
+    }
+  ];
 }
