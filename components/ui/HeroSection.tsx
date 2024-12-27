@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 
 interface HeroProps {
   title: string;
@@ -19,12 +20,13 @@ export default function HeroSection({
       role="banner"
       aria-label="Hero section"
     >
-      <img
-        loading="lazy"
+      <Image
         src={backgroundImageUrl}
         alt="hero background image"
-        className="object-cover absolute inset-0 size-full"
+        className="object-cover"
         role="presentation"
+        fill
+        priority
       />
       <div className="flex relative flex-col text-primaryLight max-w-full w-full lg:w-[800px]">
         <div className="px-4 md:px-20">
