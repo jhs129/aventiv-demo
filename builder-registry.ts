@@ -151,3 +151,37 @@ Builder.registerComponent(
     ],
   }
 );
+
+// Builder.register("editor.settings", {
+//   designTokens: {
+//     colors: [
+//       { name: "Primary Light", value: "var(--color-primary-light, #ffffff)" },
+//       {
+//         name: "Secondary Light",
+//         value: "var(--color-secondary-light, #ffffdd)",
+//       },
+//       { name: "Primary Dark", value: "var(--color-primary-dark, #24272d)" },
+//       { name: "Secondary Dark", value: "var(--color-secondary-dark, #dddddd)" },
+//       { name: "Primary Accent", value: "var(--color-accent-primary, #0d6454)" },
+//       {
+//         name: "Secondary Accent",
+//         value: "var(--color-accent-secondary, #a0ce4e)",
+//       },
+//     ],
+//     spacing: [
+//       { name: "Xl", value: "var(--spacing-lg, 40px)" },
+//       { name: "Lg", value: "var(--spacing-lg, 16px)" },
+//       { name: "Md", value: "var(--spacing-md, 8px)" },
+//       { name: "Sm", value: "var(--spacing-sm, 4px)" },
+//       { name: "None", value: "var(--spacing-none, 0px)" },
+//     ],
+//     fontFamily: [
+//       { name: "Primary", value: "var(--font-primary, 'Roboto', sans-serif)" },
+//       {
+//         name: "Secondary",
+//         value: "var(--font-secondary, 'Arial', sans-serif)",
+//       },
+//     ],
+//     // other design tokens
+//   },
+// });

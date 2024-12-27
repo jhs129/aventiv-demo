@@ -30,7 +30,7 @@ export default function HeroSection({
       />
       <div className="flex relative flex-col text-primaryLight max-w-full w-full lg:w-[800px]">
         <div className="px-4 md:px-20">
-          <h1 className="text-left w-full">{title}</h1>
+          <h1 className="text-left w-full">{title} this is an update</h1>
           <p className="mt-4 text-xl md:text-3xl text-left w-full">
             {subtitle}
           </p>
