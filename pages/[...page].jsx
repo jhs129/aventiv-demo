@@ -14,7 +14,7 @@ builder.apiVersion = "v3";
 // content for a given page
 export const getStaticProps = async ({ params }) => {
   // Fetch the builder content for the given page
-
+  console.log("params", params);
   const page = await builder
     .get("page", {
       userAttributes: {
@@ -25,6 +25,8 @@ export const getStaticProps = async ({ params }) => {
       },
     })
     .toPromise();
+
+  console.log("page", page);
 
   // Return the page content as props
   return {
@@ -77,6 +79,7 @@ export default function Page({ page, headerNav }) {
       </Head>
       {/* Render the Builder page */}
       <Header navContent={headerNav} />
+      <div>Test code update</div>
       <BuilderComponent model="page" content={page || undefined} />
       <Footer />
     </>
