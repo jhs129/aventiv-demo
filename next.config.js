@@ -1,9 +1,7 @@
-const  BuilderDevTools = require("@builder.io/dev-tools/next");
+const BuilderDevTools = require("@builder.io/dev-tools/next");
 // const {
 //   withHydrationOverlay,
 // }  = require("@builder.io/react-hydration-overlay/next");
-
-
 
 /** @type {import('next').NextConfig} */
 const nextConfig = BuilderDevTools()({
@@ -23,10 +21,15 @@ const nextConfig = BuilderDevTools()({
         port: "",
         pathname: "/-/media/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.aventiv.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 });
-
 
 module.exports = nextConfig;
 
