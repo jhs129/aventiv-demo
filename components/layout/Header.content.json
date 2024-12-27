@@ -15,16 +15,20 @@
             ]
           },
           {
-            "text": "Becoming a Supplier",
+            "text": "Transformation",
             "href": "https://vendor.securustech.net/registration/"
           },
           {
-            "text": "Purchase Order Terms and Conditions",
-            "href": "/po-terms-and-conditions"
+            "text": "Suppliers",
+            "href": "/diversity"
           },
           {
-            "text": "Diversity Equity and Inclusion",
-            "href": "/diversity-equity-inclusion"
+            "text": "Careers",
+            "href": "/careers"
+          },
+          {
+            "text": "Contact",
+            "href": "/contact"
           }
         ]
       }
